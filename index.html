@@ -1,100 +1,64 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>栖心康养 | 全景健康顾问</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Earth Online HP Check</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="app-container">
-        <!-- 头部导航 -->
-        <header class="header">
-            <div class="brand">
-                <h1 class="serif">栖心 · 全景方案</h1>
-                <p class="subtitle">Personalized Health Intelligence</p>
-            </div>
-            <div class="user-avatar">🍃</div>
-        </header>
+  <div class="container">
+    <header>
+      <h1 style="font-size:2.3rem;line-height:1.2;letter-spacing:2px;">🌏 Earth Online <span style="color:#ff69b4;">HP</span> Check <span style="font-size:1.5rem;">💖</span></h1>
+      <p style="font-size:1.13rem;color:#ff69b4;font-weight:700;margin:10px 0 0 0;">online玩家请及时查看生命值</p>
+      <p style="color:#7f8c8d;max-width:600px;margin:10px auto 0;">输入体检报告、症状、药品、饮食习惯等，获取专属饮食/生活/运动建议，守护你的HP！</p>
+    </header>
 
-        <main>
-            <!-- 【主功能】综合建议生成区 -->
-            <section class="main-consultation card">
-                <div class="section-tag">AI 综合顾问 (核心)</div>
-                <h2 class="serif">定制你的健康方案</h2>
-                
-                <div class="input-block">
-                    <label>🔍 症状描述 / 身体状态</label>
-                    <textarea id="symptomText" placeholder="例如：最近总是感到疲劳，偶尔胃痛，或者口述你的体检发现..."></textarea>
-                </div>
-
-                <div class="input-block">
-                    <label>📊 体检关键指标 (选填)</label>
-                    <div class="metrics-grid">
-                        <input type="number" id="metricUA" placeholder="尿酸">
-                        <input type="number" id="metricBP" placeholder="高压">
-                        <input type="number" id="metricSugar" placeholder="血糖">
-                    </div>
-                </div>
-
-                <div class="input-block">
-                    <label>🥗 饮食与用药清单</label>
-                    <input type="text" id="currentDrugs" placeholder="当前正在吃的药或补剂，用逗号隔开">
-                    <div class="habit-selection">
-                        <span>习惯：</span>
-                        <label><input type="checkbox" id="habitLate"> 熬夜</label>
-                        <label><input type="checkbox" id="habitHeavy"> 重油盐</label>
-                    </div>
-                </div>
-
-                <button id="generateBtn" class="btn-primary-main">生成全景健康建议</button>
-            </section>
-
-            <!-- 结果展示区 -->
-            <section id="mainResult" class="result-card hidden">
-                <div id="resultContent"></div>
-            </section>
-
-            <hr class="divider">
-
-            <!-- 【次要功能】辅助工具箱 -->
-            <section class="secondary-tools">
-                <div class="tabs">
-                    <button class="tab-btn active" data-target="tab-checker">冲突检测</button>
-                    <button class="tab-btn" data-target="tab-library">药物百科</button>
-                </div>
-
-                <!-- 冲突检测子功能 -->
-                <div id="tab-checker" class="tab-content">
-                    <div class="mini-checker">
-                        <input type="text" id="checkA" placeholder="药物 A">
-                        <input type="text" id="checkB" placeholder="药物 B">
-                        <button id="miniCheckBtn">检测</button>
-                    </div>
-                    <div id="miniResult" class="mini-result-text"></div>
-                </div>
-
-                <!-- 药物百科子功能 -->
-                <div id="tab-library" class="tab-content hidden">
-                    <div id="drugGrid" class="drug-mini-grid">
-                        <!-- 由 JS 生成 -->
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <!-- 详情弹窗 -->
-        <div id="modalOverlay" class="overlay hidden">
-            <div class="modal">
-                <button id="closeModal" class="close-btn">&times;</button>
-                <div id="modalContent"></div>
-            </div>
+    <main>
+      <section class="main-card">
+        <h2>主功能：健康建议生成</h2>
+        <form id="adviceForm" autocomplete="off">
+          <div class="advice-row">
+            <textarea id="healthInput" rows="4" placeholder="请粘贴体检报告、描述症状、列出正在服用的药品、饮食习惯等..." required></textarea>
+          </div>
+          <button id="adviceButton" type="submit">生成健康建议</button>
+        </form>
+        <div id="adviceResult" class="advice-result-box">
+          <p class="hint">请描述您的健康状况、饮食、用药等，点击生成建议。</p>
         </div>
+      </section>
 
-        <footer>
-            <p>本建议由 AI 生成，仅供参考。调整用药前请咨询临床医师。</p>
-        </footer>
-    </div>
-    <script src="script.js"></script>
+      <section class="sub-card">
+        <h3>药物相互作用查询</h3>
+        <div class="drug-row">
+          <div class="input-group">
+            <label for="drug1">药物一</label>
+            <input id="drug1" type="text" placeholder="例如：阿司匹林" autocomplete="off" />
+          </div>
+          <div class="input-group">
+            <label for="drug2">药物二</label>
+            <input id="drug2" type="text" placeholder="例如：华法林" autocomplete="off" />
+          </div>
+        </div>
+        <button id="checkButton" type="button">查询</button>
+        <div id="result" class="result-box">
+          <p class="hint">请输入一种或两种药物名称，查询详细信息或相互作用。</p>
+        </div>
+      </section>
+
+      <section class="sub-card">
+        <h3>常见药物用量与参考</h3>
+        <div class="search-section">
+          <input id="searchInput" type="text" placeholder="输入药物名称搜索" autocomplete="off" />
+          <button id="searchButton" type="button">搜索</button>
+        </div>
+        <div class="search-suggestions" id="searchSuggestions"></div>
+        <p>点击标签查看详情，或在搜索框中输入药名快速查找。</p>
+        <div class="tag-list" id="sampleTags"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,362 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=ZCOOL+KuaiLe&display=swap');
+:root {
+  --main-pink: #ff69b4;
+  --main-pink-light: #ffe4ef;
+  --main-blue: #b2ebf2;
+  --main-radius: 22px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Baloo 2', 'ZCOOL KuaiLe', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(135deg, #f8e1f4 0%, #e0f7fa 100%);
+  min-height: 100vh;
+  position: relative;
+  color: #444;
+  line-height: 1.7;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.3rem;
+  color: #ff69b4;
+  text-shadow: 0 2px 12px #fff6fa, 0 2px 8px #b2ebf2;
+  font-family: 'Baloo 2', 'ZCOOL KuaiLe', cursive, sans-serif;
+  letter-spacing: 2px;
+  margin-bottom: 0.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+header p {
+  color: #ff69b4;
+  font-size: 1.13rem;
+  font-family: 'Baloo 2', 'ZCOOL KuaiLe', cursive, sans-serif;
+  text-align: center;
+}
+
+
+/* 主功能卡片 */
+.main-card {
+  background: linear-gradient(120deg, #fff0fa 0%, #e0f7fa 100%);
+  border-radius: 32px !important;
+  box-shadow: 0 12px 40px #ffe4ef, 0 2px 8px #b2ebf2;
+  border: 2.5px solid #ffb6d5;
+  animation: popin 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+  position: relative;
+  z-index: 2;
+}
+
+.main-card h2 {
+  margin-top: 0;
+  color: var(--main-pink);
+  font-family: 'Baloo 2', 'ZCOOL KuaiLe', cursive, sans-serif;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.advice-row {
+  margin-bottom: 18px;
+}
+
+#healthInput, .input-group input, .search-section input, textarea {
+  border-radius: 18px !important;
+  border: 2.5px solid #ffb6d5 !important;
+  background: #fffafd !important;
+  font-family: 'Baloo 2', 'ZCOOL KuaiLe', cursive, inherit;
+  font-size: 1.08rem;
+  box-shadow: 0 2px 12px #ffe4ef;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+#healthInput:focus, .input-group input:focus, .search-section input:focus, textarea:focus {
+  border-color: #ff69b4 !important;
+  box-shadow: 0 0 16px #ffe4ef;
+}
+
+#adviceButton {
+  width: 100%;
+  background: linear-gradient(90deg, #ffb6d5 0%, #b2ebf2 100%) !important;
+  border-radius: 22px !important;
+  font-size: 1.13rem;
+  font-weight: 900 !important;
+  letter-spacing: 1px;
+  padding: 16px 0;
+  margin-top: 6px;
+  border: none;
+  color: #fff;
+  box-shadow: 0 8px 24px #ffe4ef;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  font-size: 1.13rem;
+  padding: 16px 0;
+}
+
+#adviceButton:hover {
+  background: linear-gradient(90deg, #ff69b4 0%, #b2ebf2 100%) !important;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 20px 40px #ffe4ef;
+}
+
+#adviceButton:active {
+  transform: scale(0.97);
+}
+
+.advice-result-box {
+  margin-top: 28px;
+  padding: 26px 20px;
+  border-radius: 22px !important;
+  border-left: 7px solid #ff69b4 !important;
+  min-height: 120px;
+  background: #fffafd !important;
+  box-shadow: 0 4px 18px #ffe4ef;
+  font-family: 'Baloo 2', 'ZCOOL KuaiLe', cursive, inherit;
+}
+
+/* 次功能卡片 */
+.sub-card {
+  background: #fff;
+  border-radius: var(--main-radius);
+  box-shadow: 0 8px 32px var(--main-pink-light);
+  padding: 26px 20px 20px 20px;
+  margin-bottom: 22px;
+  border: 1.5px solid var(--main-pink-light);
+  opacity: 0.93;
+  position: relative;
+  z-index: 1;
+}
+.sub-card h3 {
+  margin-top: 0;
+  color: var(--main-pink);
+  font-family: 'Baloo 2', 'ZCOOL KuaiLe', cursive, sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.drug-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 0;
+}
+
+.input-group label {
+  font-weight: 600;
+  color: #34495e;
+  font-size: 1rem;
+}
+
+.input-group input {
+  padding: 15px 16px;
+  border: 2px solid #bdc3c7;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+}
+
+button, .search-section button, #checkButton, #searchButton {
+  background: linear-gradient(90deg, #ffb6d5 0%, #b2ebf2 100%) !important;
+  border-radius: 22px !important;
+  color: #fff !important;
+  font-weight: 900 !important;
+  font-family: 'Baloo 2', 'ZCOOL KuaiLe', cursive, inherit;
+  letter-spacing: 1px;
+  box-shadow: 0 8px 24px #ffe4ef;
+  border: none;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  font-size: 1.13rem;
+  padding: 16px 0;
+}
+button:hover, .search-section button:hover, #checkButton:hover, #searchButton:hover {
+  background: linear-gradient(90deg, #ff69b4 0%, #b2ebf2 100%) !important;
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 20px 40px #ffe4ef;
+}
+button:active, .search-section button:active, #checkButton:active, #searchButton:active {
+  transform: scale(0.97);
+}
+
+.advice-list li {
+  margin-bottom: 14px;
+  line-height: 1.8;
+  font-size: 1.13rem;
+  background: #fff0fa;
+  border-radius: 18px;
+  padding: 14px 20px;
+  box-shadow: 0 2px 8px #ffe4ef;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Baloo 2', 'ZCOOL KuaiLe', cursive, inherit;
+  letter-spacing: 0.5px;
+  border: 2px solid #ffb6d5;
+}
+
+.tag {
+  background: #fffafd;
+  border-radius: 999px;
+  border: 2px solid #ffb6d5;
+  color: #ff69b4;
+  font-weight: 700;
+  font-family: 'Baloo 2', 'ZCOOL KuaiLe', cursive, inherit;
+  font-size: 1.01rem;
+  box-shadow: 0 2px 8px #ffe4ef;
+  transition: all 0.2s;
+}
+.tag:hover {
+  background: #ffe4ef;
+  color: #fff;
+  transform: scale(1.08);
+}
+
+.result-box, .advice-result-box {
+  border-radius: 22px !important;
+  border-left: 7px solid #ff69b4 !important;
+  background: #fffafd !important;
+  box-shadow: 0 4px 18px #ffe4ef;
+  font-family: 'Baloo 2', 'ZCOOL KuaiLe', cursive, inherit;
+}
+
+.search-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.search-section input {
+  flex: 1;
+  padding: 14px 16px;
+  border: 2px solid #bdc3c7;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-section input:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.24);
+}
+
+.search-suggestions {
+  margin-top: 6px;
+  display: none;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(52, 152, 219, 0.18);
+  padding: 12px;
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(15, 43, 75, 0.08);
+  min-height: 48px;
+}
+
+.suggestion-item {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: #f4f8ff;
+  cursor: pointer;
+  color: #2f3f55;
+  font-size: 0.98rem;
+  text-align: left;
+  border: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.suggestion-item:hover {
+  background: #eaf3ff;
+  transform: translateX(3px);
+}
+
+.search-section button {
+  padding: 12px 20px;
+  background: linear-gradient(45deg, #27ae60, #2ecc71);
+  border: none;
+  border-radius: 14px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+  font-family: inherit;
+}
+
+.search-section button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(39, 174, 96, 0.4);
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.tag {
+  padding: 12px 18px;
+  background: #f4f7fb;
+  color: #2d3a4b;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border: 1px solid rgba(52, 73, 94, 0.12);
+  font-family: inherit;
+}
+
+.tag:hover {
+  background: #edf5ff;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(46, 125, 204, 0.12);
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 25px 15px;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  .search-card,
+  .tips-card {
+    padding: 20px;
+  }
+}
+
+@keyframes popin {
+  0% { transform: scale(0.95) translateY(30px); opacity: 0.2; }
+  80% { transform: scale(1.03) translateY(-8px); opacity: 1; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
