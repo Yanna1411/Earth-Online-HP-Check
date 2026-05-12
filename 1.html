@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>栖心康养 | 全景健康顾问</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 头部导航 -->
+        <header class="header">
+            <div class="brand">
+                <h1 class="serif">栖心 · 全景方案</h1>
+                <p class="subtitle">Personalized Health Intelligence</p>
+            </div>
+            <div class="user-avatar">🍃</div>
+        </header>
+
+        <main>
+            <!-- 【主功能】综合建议生成区 -->
+            <section class="main-consultation card">
+                <div class="section-tag">AI 综合顾问 (核心)</div>
+                <h2 class="serif">定制你的健康方案</h2>
+                
+                <div class="input-block">
+                    <label>🔍 症状描述 / 身体状态</label>
+                    <textarea id="symptomText" placeholder="例如：最近总是感到疲劳，偶尔胃痛，或者口述你的体检发现..."></textarea>
+                </div>
+
+                <div class="input-block">
+                    <label>📊 体检关键指标 (选填)</label>
+                    <div class="metrics-grid">
+                        <input type="number" id="metricUA" placeholder="尿酸">
+                        <input type="number" id="metricBP" placeholder="高压">
+                        <input type="number" id="metricSugar" placeholder="血糖">
+                    </div>
+                </div>
+
+                <div class="input-block">
+                    <label>🥗 饮食与用药清单</label>
+                    <input type="text" id="currentDrugs" placeholder="当前正在吃的药或补剂，用逗号隔开">
+                    <div class="habit-selection">
+                        <span>习惯：</span>
+                        <label><input type="checkbox" id="habitLate"> 熬夜</label>
+                        <label><input type="checkbox" id="habitHeavy"> 重油盐</label>
+                    </div>
+                </div>
+
+                <button id="generateBtn" class="btn-primary-main">生成全景健康建议</button>
+            </section>
+
+            <!-- 结果展示区 -->
+            <section id="mainResult" class="result-card hidden">
+                <div id="resultContent"></div>
+            </section>
+
+            <hr class="divider">
+
+            <!-- 【次要功能】辅助工具箱 -->
+            <section class="secondary-tools">
+                <div class="tabs">
+                    <button class="tab-btn active" data-target="tab-checker">冲突检测</button>
+                    <button class="tab-btn" data-target="tab-library">药物百科</button>
+                </div>
+
+                <!-- 冲突检测子功能 -->
+                <div id="tab-checker" class="tab-content">
+                    <div class="mini-checker">
+                        <input type="text" id="checkA" placeholder="药物 A">
+                        <input type="text" id="checkB" placeholder="药物 B">
+                        <button id="miniCheckBtn">检测</button>
+                    </div>
+                    <div id="miniResult" class="mini-result-text"></div>
+                </div>
+
+                <!-- 药物百科子功能 -->
+                <div id="tab-library" class="tab-content hidden">
+                    <div id="drugGrid" class="drug-mini-grid">
+                        <!-- 由 JS 生成 -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- 详情弹窗 -->
+        <div id="modalOverlay" class="overlay hidden">
+            <div class="modal">
+                <button id="closeModal" class="close-btn">&times;</button>
+                <div id="modalContent"></div>
+            </div>
+        </div>
+
+        <footer>
+            <p>本建议由 AI 生成，仅供参考。调整用药前请咨询临床医师。</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
